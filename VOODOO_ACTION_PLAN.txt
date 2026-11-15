@@ -1,0 +1,78 @@
+======================================================================
+  PERFECT SHOT: GUN HIT - CHECKLIST & TIKET VOODOO
+======================================================================
+
+[A] YANG SUDAH SELESAI 100% DI KODE PROYEK
+----------------------------------------------------------------------
+1. Package Name Android (capacitor.config.json):
+   -> Sudah diset ke: com.amirkap.perfectshot
+2. Native Plugin Voodoo (android-voodoo/VoodooAnalyticsPlugin.java):
+   -> GameAnalytics SDK 6.5.2 (Start, Complete, Fail + score + level)
+   -> Adjust SDK 4.38.5 + Google Install Referrer 2.2 (Production mode default)
+   -> Facebook Android SDK 17.0.2 (AppEventsLogger + AchievedLevel)
+3. Pop-up GDPR & Urutan Init SDK (src/components/GdprConsentModal.tsx):
+   -> Muncul otomatis saat buka APK/AAB sebelum SDK diinisialisasi.
+   -> Klik NO  -> GameAnalytics, Adjust, Facebook, AdMob TIDAK diinit.
+   -> Klik YES -> Semua SDK langsung diinisialisasi & mengirim event.
+   -> Tersedia juga tombol ubah pilihan di menu PRIVACY.
+4. Halaman Wajib Facebook App & Play Store (di folder public/):
+   -> public/privacy-policy.html
+   -> public/data-deletion.html
+   -> public/app-ads.txt  (isi sesuai PDF Voodoo Anda)
+5. Build Sekali Klik:
+   -> CrazyGames : build-crazygames.bat  (hasil: crazygames-upload\index.html)
+   -> Android    : build-apk.bat         (hasil: APK debug & project .aab)
+
+
+[B] YANG TINGGAL ANDA LAKUKAN (TANPA CODING LAGI)
+----------------------------------------------------------------------
+Langkah 1: Ambil 1 kunci yang tersisa di Facebook Developers
+  - Buka https://developers.facebook.com/apps/ -> pilih PERFECT SHOT
+  - Masuk ke Settings -> Advanced -> salin "Client token".
+  - Sekalian lengkapi checklist di Facebook App:
+    * Add Product -> App Events -> Set Up (skip Quickstart)
+    * Settings -> Basic: isi Privacy Policy URL & User Data Deletion URL
+      (upload isi folder public/ ke website/Netlify/GitHub Pages Anda),
+      pilih kategori Games, upload ikon game.
+    * Settings -> Advanced -> Advertising Accounts: tambah 1368907386315918
+    * Ubah toggle status app di atas menjadi LIVE
+    * Di form Voodoo klik "Request app access" dan terima di Business Manager.
+
+Langkah 2: Buat file ".env" di folder proyek ini (salin dari .env.example)
+  Isi dengan nilai dari PDF Voodoo Anda + Client Token Facebook:
+    VITE_VOODOO_GA_GAME_KEY="4782ed1060154fcccb1582e697a009a8"
+    VITE_VOODOO_GA_SECRET_KEY="(isi Secret Key Anda / generate ulang di GameAnalytics)"
+    VITE_VOODOO_ADJUST_TOKEN="gtn2efg8l2bk"
+    VITE_VOODOO_ADJUST_SANDBOX="false"
+    VITE_VOODOO_FB_APP_ID="2644101859423225"
+    VITE_VOODOO_FB_CLIENT_TOKEN="(tempel Facebook Client Token di sini)"
+    VITE_VOODOO_REQUIRE_GDPR="true"
+
+Langkah 3: Klik dua kali "build-apk.bat" di Windows
+  - Android Studio akan terbuka otomatis dengan semua SDK & key terpasang.
+  - Tes dulu APK di HP Anda -> main beberapa level -> pastikan di
+    dashboard GameAnalytics muncul event Level_1, Level_2, dst.
+  - Untuk Google Play: Build -> Generate Signed Bundle / APK -> Android App Bundle (.aab).
+
+
+[C] TEMPLATE TIKET SINGKAT KE VOODOO (TINGGAL COPY-PASTE)
+----------------------------------------------------------------------
+Subject: Publishing Platform Test Question — Non-Unity Android (.aab)
+
+Hi Voodoo Team,
+
+I'm preparing to test my game "Perfect Shot" (com.amirkap.perfectshot)
+on the Voodoo Publishing Platform.
+
+The game is built with HTML5/React wrapped into an Android .aab using
+Capacitor, and I have manually integrated GameAnalytics (Start / Complete
+/ Fail progression events with level number), Adjust (production mode),
+Facebook SDK, and GDPR consent gating before SDK initialization.
+
+Could you please clarify two quick questions before I upload to Google Play?
+1. For the initial Publishing Platform test, does the build need ads
+   already integrated (e.g. rewarded ads), or should it run without ads?
+2. Is there a Video CPI Test option available before uploading an .aab
+   to Google Play Console?
+
+Thank you!

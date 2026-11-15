@@ -1,0 +1,13 @@
+{
+  "appId": "com.amirkap.perfectshot",
+  "appName": "Perfect Shot: Gun Hit",
+  "webDir": "dist",
+  "server": {
+    "androidScheme": "https"
+  },
+  "plugins": {
+    "AdMob": {
+      "initializeForTesting": true
+    }
+  }
+}

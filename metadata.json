@@ -1,0 +1,6 @@
+{
+  "name": "Perfect Shot · Gun Hit SGA",
+  "description": "Gun Hit SGA: tanam semua peluru ke roda berputar, hindari pisau rintangan, taklukkan 11 bos dengan putaran khasnya.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
